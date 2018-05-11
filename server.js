@@ -11,6 +11,11 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname + '/public/home.html'));
 })
 
+// // //linking to app.js
+// app.get('/app', (req, res) => {
+//   res.sendFile(path.join(__dirname + 'app.js'));
+// })
+
 app.get('/trade', (req, res) => {
   res.sendFile(path.join(__dirname + '/public/trade.html'));
 })
