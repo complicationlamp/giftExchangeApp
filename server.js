@@ -13,7 +13,7 @@ mongoose.connect('mongodb://localhost/myappdatabase');
 //TO DO///////////////////////////////////////////////////////////////
 //make sure the port is linking up to run from the config file
 const { DATABASE_URL, PORT } = require('./config');
-//TO DO//////////////////////////////////
+//TO DO//////////////////////////////////////////////////////////////
 //I need to make a constant for the schema in models.js (if built yet)
 // to return. the schema (look at blogger) will denote required
 //and how the json object of the data is returned
@@ -42,17 +42,38 @@ app.get('/requests', (req, res) => {
 })
 
 if (require.main === module) {
-    app.listen(process.env.PORT || 8080, function () {
-      console.info(`App listening on ${this.address().port}`);
-    });
+    // app.listen(process.env.PORT || 8080, function () {
+    //   console.info(`App listening on ${this.address().port}`);
+    // });
   }
 
-  //needed to run the server
-  //TO DO///////////////////////////////////////////////////////
-  //this will conect to a rout saved in the config.js file
-function runServer(databaseURL=DATABASE_URL, port = port) {
-
+//defines the server 
+let server;
+//this will connect to a rout saved in the config.js file
+function runServer(databaseUrl = DATABASE_URL, port = PORT) {
+  return new Promise((resolve, reject) => {
+    mongoose.connect(databaseUrl, err => {
+      if (err) {
+        return reject(err);
+      }
+      server = app.listen(port, () => {
+        console.log(`Your app is listening on port ${port}`);
+        resolve();
+      })
+        .on('error', err => {
+          mongoose.disconnect();
+          reject(err);
+        });
+    });
+  });
 }
 
-  //
-  module.exports = app;
+
+// if server.js is called directly (aka, with `node server.js`), this block
+// runs. but we also export the runServer command so other code (for instance, test code) can start the server as needed.
+if (require.main === module) {
+  runServer(DATABASE_URL).catch(err => console.error(err));
+}
+
+  //NEEDS RUN SERVER
+  module.exports = {runServer, app};

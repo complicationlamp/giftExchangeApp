@@ -13,7 +13,6 @@ exports.DATABASE_URL = process.env.DATABASE_URL || 'mongodb://localhost/blogger-
 //link this up same as above
 //NOTE: NEED TO CHANGE THE END OF THE ENDPOINT 'blog ...'
 exports.TEST_DATABASE_URL = process.env.TEST_DATABASE_URL || 'mongodb://localhost/test-blog-app';
-//TO DO///////////////////////////////////////////////////////////////////
-//For the sake of consistency move the port in run server, here
-//remember that all linking areas should be in the same file. 
+
+//rout to the port
 exports.PORT = process.env.PORT || 8080;
