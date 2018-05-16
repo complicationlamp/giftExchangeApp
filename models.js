@@ -2,36 +2,22 @@
 
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-
-//TO DO//////////////////////////////////////////////////////////////////
-/////////////////////ALL OF THIS IS FILLER///////////////////////////////
-// const blogPostSchema = mongoose.Schema({
-//   author: {
-//     firstName: String,
-//     lastName: String
-//   },
-//   title: {type: String, required: true},
-//   content: {type: String},
-//   created: {type: Date, default: Date.now}
-// });
+var Schema = mongoose.Schema;
 
 
-// blogPostSchema.virtual('authorName').get(function() {
-//   return `${this.author.firstName} ${this.author.lastName}`.trim();
-// });
+const userSchema = mongoose.Schema({
+    name: String, 
+    username: { type: String, required: true, unique: true},
+    password: { type: String, required: true},
+    relation: String,
+    country: String,
+    created: {type: Date, default: Date.now}
+});
 
-// blogPostSchema.methods.serialize = function() {
-//   return {
-//     id: this._id,
-//     author: this.authorName,
-//     content: this.content,
-//     title: this.title,
-//     created: this.created
-//   };
-// };
 
-// const BlogPost = mongoose.model('BlogPost', blogPostSchema);
+//creating a method, this is where the passport and validate password
+userSchema.method
 
-// module.exports = {BlogPost};
-//////////////////////////////////////////////////////////////////////////
-////////////////////END EXAMPLE////////////////////////////////////////
+const User = mongoose.model('User', userSchema);
+
+module.exports = User;

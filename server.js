@@ -6,7 +6,7 @@ const path = require('path');
 //need to add mongoose to make it easier to talk to mongo
 var mongoose = require('mongoose');
 //I'm not sure about how to do this
-mongoose.connect('mongodb://localhost/myappdatabase');
+mongoose.connect('mongodb://complicationlamp:gradschool1@ds129281.mlab.com:29281/gift-exchange-test');
 
 //this will contain the routeing for the server... ie run it locally
 //or run in the cloud, use blogger app as a guide
@@ -27,11 +27,6 @@ const app = express();
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname + '/public/home.html'));
 })
-
-// // //linking to app.js
-// app.get('/app', (req, res) => {
-//   res.sendFile(path.join(__dirname + 'app.js'));
-// })
 
 app.get('/trade', (req, res) => {
   res.sendFile(path.join(__dirname + '/public/trade.html'));
@@ -76,4 +71,4 @@ if (require.main === module) {
 }
 
   //NEEDS RUN SERVER
-  module.exports = {runServer, app};
+  module.exports = app;
