@@ -107,13 +107,13 @@ const {/*make a name*/} =require('./models');
 //   res.sendFile(path.join(__dirname + '/public/home.html'));
 // })
 
-app.get('/trade', (req, res) => {
-  res.sendFile(path.join(__dirname + '/public/trade.html'));
-})
+// app.get('/trade', (req, res) => {
+//   res.sendFile(path.join(__dirname + '/public/trade.html'));
+// })
 
-app.get('/requests', (req, res) => {
-  res.sendFile(path.join(__dirname + '/public/requests.html'));
-})
+// app.get('/requests', (req, res) => {
+//   res.sendFile(path.join(__dirname + '/public/requests.html'));
+// })
 
 if (require.main === module) {
     // app.listen(process.env.PORT || 8080, function () {
