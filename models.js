@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-var Schema = mongoose.Schema;
+// var Schema = mongoose.Schema;
 
 
 const userSchema = mongoose.Schema({
