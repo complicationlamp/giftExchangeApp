@@ -8,23 +8,23 @@
     "url": "git@github.com:complicationlamp/giftExchangeApp.git"
   },
   "dependencies": {
-    "e": "0.0.4",
-    "express": "^4.16.3",
-    "mocha": "^5.1.1",
-    "mongoose": "^5.1.1",
-    "path": "^0.12.7",
     "bcryptjs": "*",
     "body-parser": "*",
     "connect-flash": "*",
     "cookie-parser": "^1.4.1",
+    "e": "0.0.4",
+    "express": "^4.16.3",
     "express-handlebars": "*",
     "express-messages": "*",
     "express-session": "*",
     "express-validator": "*",
+    "mocha": "^5.1.1",
     "mongodb": "*",
-    "passport": "*",
+    "mongoose": "^5.1.1",
+    "passport": "^0.4.0",
     "passport-http": "*",
-    "passport-local": "*"
+    "passport-local": "*",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "chai": "^4.1.2",

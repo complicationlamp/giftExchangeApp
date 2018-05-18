@@ -112,6 +112,13 @@ app.get('/register', (req, res) => {
   res.sendFile(path.join(__dirname + '/public/register.html'));
 })
 
+app.post('/register', (req, res) => {
+  const name = 
+  const userName =
+  const email = 
+  
+})
+
 app.get('/trade', (req, res) => {
   res.sendFile(path.join(__dirname + '/public/trade.html'));
 })
