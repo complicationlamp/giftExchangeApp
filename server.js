@@ -20,68 +20,68 @@ var db = mongoose.connection;
 //init app
 const app = express();
 
-//login
-var routes = require('./routes/index');
-var users = require('./routes/users');
+// //login
+// var routes = require('./routes/index');
+// var users = require('./routes/users');
 
-// View Engine
-app.set('views', path.join(__dirname, 'views'));
-app.engine('handlebars', exphbs({defaultLayout:'layout'}));
-app.set('view engine', 'handlebars');
+// // View Engine
+// app.set('views', path.join(__dirname, 'views'));
+// app.engine('handlebars', exphbs({defaultLayout:'layout'}));
+// app.set('view engine', 'handlebars');
 
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(cookieParser());
 
-// Set Static Folder
-app.use(express.static(path.join(__dirname, 'public')));
+// // Set Static Folder
+// app.use(express.static(path.join(__dirname, 'public')));
 
-// Express Session
-app.use(session({
-  secret: 'secret',
-  saveUninitialized: true,
-  resave: true
-}));
+// // Express Session
+// app.use(session({
+//   secret: 'secret',
+//   saveUninitialized: true,
+//   resave: true
+// }));
 
-// Passport init
-app.use(passport.initialize());
-app.use(passport.session());
+// // Passport init
+// app.use(passport.initialize());
+// app.use(passport.session());
 
-// Express Validator
-app.use(expressValidator({
-  errorFormatter: function(param, msg, value) {
-      var namespace = param.split('.')
-      , root    = namespace.shift()
-      , formParam = root;
+// // Express Validator
+// app.use(expressValidator({
+//   errorFormatter: function(param, msg, value) {
+//       var namespace = param.split('.')
+//       , root    = namespace.shift()
+//       , formParam = root;
 
-    while(namespace.length) {
-      formParam += '[' + namespace.shift() + ']';
-    }
-    return {
-      param : formParam,
-      msg   : msg,
-      value : value
-    };
-  }
-}));
+//     while(namespace.length) {
+//       formParam += '[' + namespace.shift() + ']';
+//     }
+//     return {
+//       param : formParam,
+//       msg   : msg,
+//       value : value
+//     };
+//   }
+// }));
 
-// Connect Flash
-app.use(flash());
+// // Connect Flash
+// app.use(flash());
 
-// Global Vars
-app.use(function (req, res, next) {
-  res.locals.success_msg = req.flash('success_msg');
-  res.locals.error_msg = req.flash('error_msg');
-  res.locals.error = req.flash('error');
-  res.locals.user = req.user || null;
-  next();
-});
+// // Global Vars
+// app.use(function (req, res, next) {
+//   res.locals.success_msg = req.flash('success_msg');
+//   res.locals.error_msg = req.flash('error_msg');
+//   res.locals.error = req.flash('error');
+//   res.locals.user = req.user || null;
+//   next();
+// });
 
-app.use('/', routes);
-app.use('/users', users);
+// // app.use('/', routes);
+// app.use('/users', users);
 
-//login end
+// //login end
 
 // //need to add mongoose to make it easier to talk to mongo
 // var mongoose = require('mongoose');
@@ -103,17 +103,22 @@ const {/*make a name*/} =require('./models');
 
 // app.use(express.static('public'));
 //MOVED TO ROUTS/INDEX.JS
-// app.get('/', (req, res) => {
-//   res.sendFile(path.join(__dirname + '/public/home.html'));
-// })
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname + '/public/home.html'));
+})
 
-// app.get('/trade', (req, res) => {
-//   res.sendFile(path.join(__dirname + '/public/trade.html'));
-// })
+//register
+app.get('/register', (req, res) => {
+  res.sendFile(path.join(__dirname + '/public/register.html'));
+})
 
-// app.get('/requests', (req, res) => {
-//   res.sendFile(path.join(__dirname + '/public/requests.html'));
-// })
+app.get('/trade', (req, res) => {
+  res.sendFile(path.join(__dirname + '/public/trade.html'));
+})
+
+app.get('/requests', (req, res) => {
+  res.sendFile(path.join(__dirname + '/public/requests.html'));
+})
 
 if (require.main === module) {
     // app.listen(process.env.PORT || 8080, function () {
