@@ -31,7 +31,7 @@ const { DATABASE_URL, PORT } = require('./config');
 //I need to make a constant for the schema in models.js (if built yet)
 // to return. the schema (look at blogger) will denote required
 //and how the json object of the data is returned
-const {/*make a name*/} =require('./models');
+const {/*make a name*/} =require('./models/user.js');
 
 
 
@@ -46,12 +46,12 @@ app.get('/register', (req, res) => {
   res.sendFile(path.join(__dirname + '/public/register.html'));
 })
 
-app.post('/register', (req, res) => {
-  const name = 
-  const userName =
-  const email = 
+// app.post('/register', (req, res) => {
+//   const name = 
+//   const userName =
+//   const email = 
   
-})
+// })
 
 app.get('/trade', (req, res) => {
   res.sendFile(path.join(__dirname + '/public/trade.html'));
