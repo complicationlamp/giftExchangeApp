@@ -13,7 +13,7 @@ const userSchema = mongoose.Schema({
     // relation: String,
     // country: String,
     password: { type: String, required: true},
-    created: {type: Date, default: Date.now}
+    // created: {type: Date, default: Date.now}
 });
 
 

@@ -16,6 +16,8 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/giftExApp');
 var db = mongoose.connection;
 
+const userRouts = require('./routes/users');
+
 
 //init app
 const app = express();
@@ -46,12 +48,8 @@ app.get('/register', (req, res) => {
   res.sendFile(path.join(__dirname + '/public/register.html'));
 })
 
-// app.post('/register', (req, res) => {
-//   const name = 
-//   const userName =
-//   const email = 
-  
-// })
+//Routes which handle the register request
+app.use("/register", userRouts);
 
 app.get('/trade', (req, res) => {
   res.sendFile(path.join(__dirname + '/public/trade.html'));
