@@ -6,12 +6,13 @@ mongoose.Promise = global.Promise;
 
 
 const userSchema = mongoose.Schema({
+    _id: mongoose.Schema.Types.ObjectId,
     name: String, 
     username: { type: String, required: true, unique: true},
-    password: { type: String, required: true},
     email: String,
     // relation: String,
     // country: String,
+    password: { type: String, required: true},
     created: {type: Date, default: Date.now}
 });
 
@@ -19,6 +20,4 @@ const userSchema = mongoose.Schema({
 //creating a method, this is where the passport and validate password
 userSchema.method
 
-const User = mongoose.model('User', userSchema);
-
-module.exports = User;
+module.exports = mongoose.model('User', userSchema);
