@@ -12,7 +12,7 @@ chai.use(chaiHttp);
 
 
 describe('basic express', () => {
-    it('get request "/" should return index.html', () => {
+    it('get request "/" should return home.html', () => {
         return chai.request(app)
         .get('/')
         .then(function(res) {
@@ -22,7 +22,7 @@ describe('basic express', () => {
 });
 
 describe('testing the 200 code', function() {
-    it('index.html should return a code of 200', function() {
+    it('home.html should return a code of 200', function() {
         let res;
         // console.log('tests');
         return chai.request(app)
@@ -33,29 +33,15 @@ describe('testing the 200 code', function() {
             });
     });
 
-    it('trade.html should return a code of 200', function() {
-        let res;
-        // console.log('tests');
-        return chai.request(app)
-            .get('/trade')
-            // .then(function(_res) {
-            //     res = _res;
-            //     expect(res).to.have.status(200);
-            });
-    });
 
-    it('requests.html should return a code of 200', function() {
+    it('register.html should return a code of 200', function() {
         let res;
         // console.log('tests');
         return chai.request(app)
-            .get('/requests')
+            .get('/register')
             .then(function(_res) {
                 res = _res;
                 expect(res).to.have.status(200);
             });
     });
-
-
-
-
-
+});
